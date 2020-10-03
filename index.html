@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style>
+        
+        .mole{
+            background-color: rgb(128, 64,0);
+            border-radius: 100px 100px 0px 0px;
+            height: 100%;
+            width: 10%;
+            position: absolute;
+            top: 100%;
+            background-image:url(Images/mole3.jpg);
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        
+        .leftEar{
+            background-color: rgb(128,64,0);
+            border-radius: 100px;
+            position: absolute;
+            float: left;
+            min-width: 30%;
+            padding-top: 30%;
+            z-index: -1;
+
+        }
+        
+        .rightEar{
+            background-color: rgb(128,64,0);
+            border-radius: 100px;
+            position: absolute;
+            left: 70%;
+            float: right;
+            min-width: 30%;
+            padding-top: 30%;
+            z-index: -1;
+        }
+        
+        #mole1{
+            left:10%;
+        }
+        #mole2{
+            left:45%;
+        }
+        #mole3{
+            left:80%;
+        }
+        
+        .score{
+            font-family: sans-serif;
+            color: white;
+            font-size: 18px;
+            position: absolute;
+            right: 25px;
+            background-color:brown;
+            padding: 20px;
+            z-index: -2;
+            border-radius: 45px;
+        }
+        
+    </style>
+    
+    
+    <script>
+            
+        jQuery(document).ready(function(){
+            
+            var moleHits = 0;
+            
+            
+            
+            jQuery(".mole").animate({"top":"0%"}, 5000, function(){
+                
+                jQuery(".mole").css("top", "100%");
+                jQuery(".score").html("GAME OVER");
+                
+            });
+            
+            jQuery(".mole").click(function(){
+               
+                
+                
+                jQuery(this).css("background-image", "url(Images/mole1.jpg)");
+                jQuery(this).stop().animate({"top":"100%"}, 300, function(){
+                    
+                    moleHits = moleHits - (-1);
+                    jQuery(".score").html("SCORE: " + moleHits);
+                    
+                    jQuery(this).css("background-image", "url(Images/mole3.jpg)");
+                    jQuery(this).animate({"top":"0%"}, 5000, function(){
+                
+                        jQuery(".mole").css("top", "100%");
+                        jQuery(".score").html("GAME OVER");
+                
+                    });
+                    
+                });
+                
+            });
+               
+        });
+        
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="score">SCORE: 0</div>
+    
+    
+    <div class="mole" id="mole1">
+        <div class="leftEar"></div>
+        <div class="rightEar"></div>
+    </div>
+    <div class="mole" id="mole2">
+        <div class="leftEar"></div>
+        <div class="rightEar"></div>
+    </div>
+    <div class="mole" id="mole3">
+        <div class="leftEar"></div>
+        <div class="rightEar"></div>
+    </div>
+
+</body>
+
+
+
+</html>
